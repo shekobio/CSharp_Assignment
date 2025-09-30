@@ -1,7 +1,10 @@
-﻿namespace Infrastructure.Interface;
+﻿using Infrastructure.Models;
+
+namespace Infrastructure.Interface;
 
 public interface IFileService
 {
+  
     T? GetContentFromFile<T>();
-    bool SaveContenToFile<T>(T content);
+    bool SaveContentToFile<T>(T content);
 }

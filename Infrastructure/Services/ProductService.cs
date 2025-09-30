@@ -1,13 +1,22 @@
 ﻿using Infrastructure.Interface;
 using Infrastructure.Models;
+using System;
 using System.Xml.Linq;
 
 namespace Infrastructure.Services;
 
 public class ProductService : IProductService
 {
+    private readonly IFileService _fileService;
     private List<Product> _productList = [];
-    public bool AddToProductList(ProductCreateRequest newProduct)
+
+    public ProductService(IFileService fileService)
+    {
+        _fileService = fileService;
+    }
+
+
+    public bool AddProductToList(ProductCreateRequest newProduct)
     {
         if (newProduct == null)
             return false;
@@ -26,16 +35,10 @@ public class ProductService : IProductService
 
         _productList.Add(product);
 
+        _fileService.SaveContentToFile(_productList);
+
         return true;
-
     }
-
-    public Product? GetproductById(string id)
-    {
-        var product = _productList.FirstOrDefault(x => x.Id == id);
-        return product;
-    }
-
     public Product? GetProductByName(string name)
     {
         var product = _productList.FirstOrDefault(x => x.Name == name);
@@ -43,12 +46,15 @@ public class ProductService : IProductService
     }
     public Product? DeleteProductByName(string name)
     {
-        var product = _productList.FirstOrDefault(y => y.Name == name);
+        var product = _productList.FirstOrDefault(y => string.Equals(y.Name, name, StringComparison.OrdinalIgnoreCase));
 
         if (product == null)
             return null;
 
         _productList.Remove(product);
+       _fileService.SaveContentToFile(_productList);
+    
+            
         return product;
     }
 
@@ -61,4 +67,5 @@ public class ProductService : IProductService
         _productList = products.ToList();
     }
 
+   
 }

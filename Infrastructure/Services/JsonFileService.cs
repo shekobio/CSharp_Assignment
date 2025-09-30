@@ -40,14 +40,14 @@ public class JsonFileService(string filePath, JsonSerializerOptions? options = n
         }
     }
 
-    public bool SaveContenToFile<T>(T content)
+    public bool SaveContentToFile<T>(T content)
     {
         try
         {
             var json = JsonSerializer.Serialize(content, _options);
             return SaveContentToFile(json);
 
-
+                 
         }
         catch
         {
