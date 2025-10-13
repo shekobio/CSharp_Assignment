@@ -25,13 +25,20 @@
             <Label Content="Product Price" Margin="0,0,10,0"/>
             <TextBox x:Name="Txt_Price" Width="150" Margin="0,0,10,0"/>
             <Button Content="Add" Margin="0,10,0,0" Width="80" Click="Btn_Add_Click"/>
+            <Button Content="View List" Margin="0,10,0,0" Width="80" Click="Btn_ViewList_Click"/>
+            <Button Content="Clear The List"  Margin="0,10,0,0" Width="80" Click="Button_Click"
+                    />
+            <Button Content="Delete" Grid.Row="3" Margin="0,10,0,0" Width="80" Click="Btn_Delete_Click"
+          />
 
         </StackPanel>
 
         <ListBox x:Name="ProductList" Grid.Row="1" Height="400"/>
+      
+       
 
-   
 
 
+                          
     </Grid>
 </Window>

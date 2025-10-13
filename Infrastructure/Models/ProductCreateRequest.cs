@@ -2,7 +2,7 @@
 
 public class ProductCreateRequest
 {
-   
-    public string Name { get; set; } = null!;
-    public decimal Price { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public string Product_Name { get; set; } = null!;
+    public decimal Product_Price { get; set; }
 }

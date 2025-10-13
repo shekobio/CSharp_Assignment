@@ -20,7 +20,7 @@ namespace Presentation.WebApp_2
         {
             base.OnStartup(e);
 
-            var filePath = @"c:\data\products.json";
+            var filePath = @"c:\data\productsWebApp.json";
             Directory.CreateDirectory(Path.GetDirectoryName(filePath)!);
 
             HostApp = Host.CreateDefaultBuilder().ConfigureServices(service =>
@@ -39,7 +39,7 @@ namespace Presentation.WebApp_2
             main.Show();
 
         }
-        protected override void OnExit(ExitEventArgs e)
+       protected override void OnExit(ExitEventArgs e)
         {
             HostApp?.Dispose();
             base.OnExit(e);

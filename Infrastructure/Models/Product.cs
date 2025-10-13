@@ -2,9 +2,9 @@
 
 public class Product
 {
-    public string Id =  Guid.NewGuid().ToString();
-    public string? Name { get; set; } = null;
-    public decimal Price { get; set; }  
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public string? Prodcut_Name { get; set; } = null;
+    public decimal Product_Price { get; set; }  
 
 }
 

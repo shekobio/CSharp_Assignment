@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Presemtation;
 using System.Text.Json;
 
-string filePath = @"c:\data\products.json";
+string filePath = @"c:\data\productsConsoleApp.json";
 var builder = Host.CreateApplicationBuilder();
 builder.Services.AddSingleton<IFileService>(_ => new JsonFileService(filePath, new JsonSerializerOptions { WriteIndented = true }));
 builder.Services.AddSingleton<IProductService, ProductService>();

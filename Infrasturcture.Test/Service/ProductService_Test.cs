@@ -19,7 +19,7 @@ public class ProductService_Test
         fileServiceMock.Setup(fs => fs.SaveContentToFile(It.IsAny<string>()));
  
         var productService = new ProductService(fileService);                 
-        var product = new ProductCreateRequest { Id = "1", Name = "Product1", Price = 155};
+        var product = new ProductCreateRequest { Id = Guid.NewGuid() ,  Product_Name = "Product1", Product_Price = 155};
 
         //Act 
        var result =  productService.AddProductToList(product);

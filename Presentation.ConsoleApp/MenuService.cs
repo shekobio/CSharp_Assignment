@@ -1,8 +1,5 @@
 ﻿using Infrastructure.Interface;
 using Infrastructure.Models;
-using Infrastructure.Services;
-using Microsoft.VisualBasic.FileIO;
-using System.Runtime.CompilerServices;
 
 namespace Presemtation;
 
@@ -25,10 +22,10 @@ public class MenuService(IProductManager productManager, IProductService product
             
         }
 
-        product.Name = name;
+        product.Product_Name = name;
 
         Console.Write("Product Price: ");
-        product.Price = decimal.Parse( Console.ReadLine()!);
+        product.Product_Price = decimal.Parse( Console.ReadLine()!);
 
         var result = _productManager.SaveProduct(product);
         if (result)
@@ -52,7 +49,7 @@ public class MenuService(IProductManager productManager, IProductService product
         var products = _productManager.GetAllProduct();
         foreach (var product in products)
         {
-            Console.WriteLine($"{"Product Name: "}{product.Name}{"\nID:"}  {product.Id}{"\nProduct Price:"}{product.Price}\n");
+            Console.WriteLine($"{"Product Name: "}{product.Prodcut_Name}{"\nID:"}  {product.Id}{"\nProduct Price:"}{product.Product_Price}\n");
 
             Console.WriteLine("=================================================");
         }
@@ -75,7 +72,7 @@ public class MenuService(IProductManager productManager, IProductService product
         var deleted = _productService.DeleteProductByName(name);
         if (deleted != null)
         {
-            Console.WriteLine($"{deleted.Name} was deleted successfully.");
+            Console.WriteLine($"{deleted.Prodcut_Name} was deleted successfully.");
 
            
             
