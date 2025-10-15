@@ -23,7 +23,7 @@ public class ProductService : IProductService
         if (string.IsNullOrEmpty(newProduct.Product_Name))
             return false;
 
-        if (_productList.Any(x => x.Prodcut_Name == newProduct.Product_Name.ToUpper()))
+        if (_productList.Any(x => (x.Prodcut_Name!.ToLower() == newProduct.Product_Name.ToLower())))
            return false;
 
         Product product = new Product

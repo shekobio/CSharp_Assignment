@@ -1,10 +1,6 @@
 ﻿using Infrastructure.Interface;
-using Infrastructure.Managers;
-using Infrastructure.Models;
-using Infrastructure.Services;
-using System.IO;
-using System.Text;
 using System.Windows;
+
 
 
 namespace Presentation.WebApp_2
@@ -22,10 +18,8 @@ namespace Presentation.WebApp_2
 
             _productManager = productManager;
             _productService = productService;
-           
-        }
-  
 
+        }
         private void Btn_Add_Click(object sender, RoutedEventArgs e)
         {
 
@@ -48,20 +42,11 @@ namespace Presentation.WebApp_2
             MessageBox.Show(ok ? "Product added" : "Failed to add product");
             if (ok)
             {
-
                 Txt_Name.Text = " ";
-                Txt_Price.Text = " ";
-
-               
-                           
+                Txt_Price.Text = " ";                  
             }
 
         }
-
-
-
-                      
-
         private void Btn_Delete_Click(object sender, RoutedEventArgs e)
         {                 
             var name = Txt_Name.Text.Trim();
@@ -69,37 +54,20 @@ namespace Presentation.WebApp_2
             {
                 MessageBox.Show("Enter a Product name: ");
                 return; 
-               
-
             }
             var deleted = _productService.DeleteProductByName(name);
             if (deleted != null)
             {
                 MessageBox.Show($"{deleted.Prodcut_Name} was deleted successfully.");
-
-
-
-
             }
 
             else
             {
                 MessageBox.Show("Product Not Found.");
             }
-
-
-                                 
-           
-
-       
-
-
-
         }
-
-        private void Btn_ViewList_Click(object sender, RoutedEventArgs e)
+          private void Btn_ViewList_Click(object sender, RoutedEventArgs e)
         {
-
             ProductList.Items.Clear();
             var products = _productManager.GetAllProduct();
 
@@ -107,19 +75,15 @@ namespace Presentation.WebApp_2
             {
                 ProductList.Items.Add($"Product Name: {product.Prodcut_Name} - Product Price: {product.Product_Price} kr - Id: {product.Id}");
             }
-
-          
- 
-
-
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ProductList.Items.Clear();
         }
+       
     }
-    
-    
 }
+    
+    
+
   
